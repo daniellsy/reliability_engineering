@@ -1,0 +1,15 @@
+function g=work_4(x);
+r=x(1);s=x(2);
+cdfr=unifcdf(r,0,100);
+pdfr=unifpdf(r,0,100);
+ncr=norminv(cdfr);
+sigmar1=normpdf(ncr)/ pdfr;
+miur1=r-ncr*sigmar1;
+cdfs=expcdf(s,12.5);
+pdfs=exppdf(s,12.5);
+ncs=norminv(cdfs);
+sigmas=normpdf(ncs)/ pdfs;
+mius=s-ncs*sigmas;
+y1=(ncr-miur1)/sigmar1;
+y2=(ncs-mius)/sigmas;
+g=(y1^2+y2^2)^0.5;
